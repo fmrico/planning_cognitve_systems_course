@@ -27,7 +27,8 @@ using std::placeholders::_1;
 TestNode::TestNode()
 : Node("test_ci")
 {
-  sub_ = create_subscription<std_msgs::msg::String>("/message", 10, std::bind(&TestNode::string_callback, this, _1));
+  sub_ = create_subscription<std_msgs::msg::String>(
+    "/message", 10, std::bind(&TestNode::string_callback, this, _1));
 }
 
 std::string

@@ -21,6 +21,10 @@
 
 #include "test_ci/TestNode.hpp"
 
+TEST(test_node, test_get_msg)
+{
+}
+
 TEST(test_node, subscription)
 {
   auto node = std::make_shared<test_ci::TestNode>();
@@ -61,7 +65,7 @@ TEST(test_node, subscription)
     }
   }
 
-  ASSERT_EQ("hello____", node->get_last_msg());
+  ASSERT_EQ("hello", node->get_last_msg());
 
   finish = true;
   t.join();
