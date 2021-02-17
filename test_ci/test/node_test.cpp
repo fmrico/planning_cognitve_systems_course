@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <memory>
+
 #include "gtest/gtest.h"
 
 #include "rclcpp/rclcpp.hpp"
@@ -19,10 +21,14 @@
 
 #include "test_ci/TestNode.hpp"
 
+TEST(test_node, test_get_msg)
+{
+}
+
 TEST(test_node, subscription)
 {
   auto node = std::make_shared<test_ci::TestNode>();
-  
+
   auto test_node = rclcpp::Node::make_shared("test_node");
   auto test_pub = test_node->create_publisher<std_msgs::msg::String>(
     "/message", 10);
