@@ -12,10 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+ #include <string>
+
 #include "test_ci/TestNode.hpp"
 
 #include "rclcpp/rclcpp.hpp"
-
 #include "std_msgs/msg/string.hpp"
 
 namespace test_ci
@@ -35,11 +36,11 @@ TestNode::get_last_msg() const
   return last_msg_;
 }
 
-void 
+void
 TestNode::string_callback(const std_msgs::msg::String::ConstSharedPtr msg)
 {
   last_msg_ = msg->data;
 }
 
 
-}  // namespace plansys2
+}  // namespace test_ci
