@@ -15,6 +15,8 @@
 #ifndef TEST_CI__TESTNODE_HPP_
 #define TEST_CI__TESTNODE_HPP_
 
+#include <string>
+
 #include "rclcpp/rclcpp.hpp"
 
 #include "std_msgs/msg/string.hpp"
@@ -31,11 +33,11 @@ public:
 
 private:
   void string_callback(const std_msgs::msg::String::ConstSharedPtr msg);
-  
+
   rclcpp::Subscription<std_msgs::msg::String>::SharedPtr sub_;
   std::string last_msg_;
 };
 
-}  // namespace plansys2
+}  // namespace test_ci
 
 #endif  // TEST_CI__TESTNODE_HPP_
