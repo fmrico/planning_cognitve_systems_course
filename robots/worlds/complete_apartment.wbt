@@ -8,8 +8,8 @@ WorldInfo {
   coordinateSystem "NUE"
 }
 Viewpoint {
-  orientation -0.9859103719661495 0.11423879038234806 0.12218934986956416 0.7288735648345834
-  position 8.081447561125136 17.00174001346348 25.05856465512699
+  orientation -0.32889445004899304 -0.8808947750024851 -0.3403716147099981 1.8776579843519905
+  position -16.223618255653026 18.61059873486654 6.943661996721466
   exposure 0.5
   ambientOcclusionRadius 1
 }
@@ -1242,45 +1242,6 @@ Wall {
   size 3.2 2.4 0.3
 }
 Door {
-  translation 8.43 0 6.24
-  rotation 0 1 0 1.5708
-  size 1 2.4 0.3
-  jointAtLeft FALSE
-  frameSize 0.05 0.05 0.001
-  frameAppearance BrushedAluminium {
-  }
-  doorHandle DoorLever {
-    jointAtLeft FALSE
-  }
-}
-Door {
-  translation 3.95 0 3.89
-  rotation 0 1 0 3.14159
-  name "door(6)"
-  size 1 2.4 0.3
-  frameSize 0.05 0.05 0.001
-  frameAppearance BrushedAluminium {
-  }
-}
-Door {
-  translation 8.43 0 4.94
-  rotation 0 1 0 1.5708
-  name "door(5)"
-  size 1 2.4 0.3
-  frameSize 0.05 0.05 0.001
-  frameAppearance BrushedAluminium {
-  }
-}
-Door {
-  translation 7.24 0 6.97
-  rotation 0 1 0 3.37175e-07
-  name "door(3)"
-  size 1 2.4 0.3
-  frameSize 0.05 0.05 0.001
-  frameAppearance BrushedAluminium {
-  }
-}
-Door {
   translation 6.6 0 0.91
   rotation 0 1 0 -1.5707953071795862
   name "door(4)"
@@ -1293,15 +1254,6 @@ Door {
   translation 7.49 0 0
   rotation 0 1 0 -3.1415923071795864
   name "door(1)"
-  size 1 2.4 0.3
-  frameSize 0.05 0.05 0.001
-  frameAppearance BrushedAluminium {
-  }
-}
-Door {
-  translation 8.43 0 2.14977
-  rotation 0 1 0 1.5708
-  name "door(2)"
   size 1 2.4 0.3
   frameSize 0.05 0.05 0.001
   frameAppearance BrushedAluminium {
