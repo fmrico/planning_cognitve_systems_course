@@ -1,0 +1,11 @@
+<component id="MyHFSM">
+ <state x="-686" y="-163" initial="false" id="Second"/>
+ <state x="-454" y="-396" initial="false" id="First">
+  <activation id="TestComp"/>
+ </state>
+ <state x="-327" y="-150" initial="true" id="Initial"/>
+ <component x="-435" y="-632" id="TestComp"/>
+ <transition src="Second" dst="Initial"/>
+ <transition src="Initial" dst="First"/>
+ <transition src="First" dst="Second"/>
+</component>
