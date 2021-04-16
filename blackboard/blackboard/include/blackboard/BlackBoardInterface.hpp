@@ -42,8 +42,6 @@ template<class T>
 class Entry : public EntryBase, public std::enable_shared_from_this<Entry<T>>
 {
 public:
-  // using Type = T;
-
   using Ptr = std::shared_ptr<Entry<T>>;
   static Ptr make_shared(const T & data)
   {
