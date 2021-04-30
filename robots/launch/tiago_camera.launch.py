@@ -29,8 +29,8 @@ from ament_index_python.packages import get_package_share_directory
 from launch.substitutions import LaunchConfiguration
 
 def generate_launch_description():
-    # nav2_bringup_dir = get_package_share_directory('nav2_bringup')
-    # nav2_launch_dir = os.path.join(nav2_bringup_dir, 'launch')
+    nav2_bringup_dir = get_package_share_directory('nav2_bringup')
+    nav2_launch_dir = os.path.join(nav2_bringup_dir, 'launch')
     package_dir = get_package_share_directory('robots')
 
     slam = LaunchConfiguration('slam')
@@ -98,13 +98,13 @@ def generate_launch_description():
     head2camera = launch_ros.actions.Node(
       package='tf2_ros',
       executable='static_transform_publisher',
-      arguments=['0.0', '0.0', '0.00', '.0', '0.0', '3.1415', 'head_2_link', 'camera'],
+      arguments=['0.0', '0.0', '0.00', '0.0', '-1.57', '3.1415', 'head_2_link', 'kinect color'],
       parameters=[{'use_sim_time': use_sim_time}],
     )
     head2rangefinder = launch_ros.actions.Node(
       package='tf2_ros',
       executable='static_transform_publisher',
-      arguments=['0.0', '0.0', '0.00', '0.0', '0.0', '3.1415', 'head_2_link', 'range-finder'],
+      arguments=['0.0', '0.0', '0.00', '0.0', '-1.57', '3.1415', 'head_2_link', 'kinect range'],
       parameters=[{'use_sim_time': use_sim_time}]
     )
     baselink2bf = launch_ros.actions.Node(
@@ -137,9 +137,9 @@ def generate_launch_description():
               package='depth_image_proc',
               plugin='depth_image_proc::PointCloudXyzrgbNode',
               name='point_cloud_xyz_node',
-              remappings=[('rgb/camera_info', '/camera/camera_info'),
-                          ('rgb/image_rect_color', '/camera/image_raw'),
-                          ('depth_registered/image_rect', '/range_finder/image_depth'),
+              remappings=[('rgb/camera_info', '/kinect_color/camera_info'),
+                          ('rgb/image_rect_color', '/kinect_color/image_raw'),
+                          ('depth_registered/image_rect', '/kinect_range/image_depth'),
                           ('points', '/depth_registered/points')],
               parameters=[{'use_sim_time': use_sim_time}]
           ),
@@ -148,16 +148,16 @@ def generate_launch_description():
       output='screen',
     )
     
-    # nav2_bringup_cmd = IncludeLaunchDescription(
-    #   PythonLaunchDescriptionSource(os.path.join(nav2_launch_dir, 'bringup_launch.py')),
-    #   launch_arguments={'namespace': namespace,
-    #                     'use_namespace': use_namespace,
-    #                     'slam': slam,
-    #                     'map': map_yaml_file,
-    #                     'use_sim_time': use_sim_time,
-    #                     'params_file': params_file,
-    #                     'default_bt_xml_filename': default_bt_xml_filename,
-    #                     'autostart': autostart}.items())
+    nav2_bringup_cmd = IncludeLaunchDescription(
+      PythonLaunchDescriptionSource(os.path.join(nav2_launch_dir, 'bringup_launch.py')),
+      launch_arguments={'namespace': namespace,
+                        'use_namespace': use_namespace,
+                        'slam': slam,
+                        'map': map_yaml_file,
+                        'use_sim_time': use_sim_time,
+                        'params_file': params_file,
+                        'default_bt_xml_filename': default_bt_xml_filename,
+                        'autostart': autostart}.items())
 
     ld = LaunchDescription()
 
@@ -177,6 +177,6 @@ def generate_launch_description():
     ld.add_action(pointcloud_xyz)
 
     ld.add_action(webots)
-    # ld.add_action(nav2_bringup_cmd)
+    ld.add_action(nav2_bringup_cmd)
     
     return ld
