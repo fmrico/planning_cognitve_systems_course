@@ -1,33 +1,33 @@
 (define (domain blocks)
 (:requirements :strips :equality)
+
 (:predicates 
   (on ?x ?y)
   (clear ?x)
-  (table ?t)
   (block ?b)
 )
 
 (:constants Table)
 
 (:action move
-  :parameters (?b ?x ?y)
+  :parameters (?b ?from ?to)
   :precondition 
     (and 
       (block ?b) 
-      (block ?y) 
+      (block ?to) 
       (clear ?b)
-      (clear ?y)
-      (on ?b ?x)
-      (not (= ?b ?x))
-      (not (= ?b ?y))
-      (not (= ?x ?y))
+      (clear ?to)
+      (on ?b ?from)
+      (not (= ?b ?from))
+      (not (= ?b ?to))
+      (not (= ?from ?to))
     )
   :effect 
     (and 
-      (on ?b ?y)
-      (clear ?x)
-      (not (on ?b ?x))
-      (not (clear ?y))
+      (on ?b ?to)
+      (clear ?from)
+      (not (on ?b ?from))
+      (not (clear ?to))
     )
 )
 
